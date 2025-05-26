@@ -98,9 +98,8 @@ namespace Productos.Controllers
             return CreatedAtAction(nameof(GetProducto), new { id = producto.Id }, producto);
         }
 
-        [HttpGet("{id}")]
-        [ApiExplorerSettings(IgnoreApi = true)]
-
+        [HttpGet("detalle/{id}", Name = "GetsProducto")]
+        [SwaggerIgnore]
         public async Task<ActionResult<Producto>> GetProducto(int id)
         {
             var producto = await _context.Productos.FindAsync(id);
